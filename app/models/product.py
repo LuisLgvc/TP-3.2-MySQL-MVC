@@ -61,3 +61,30 @@ class Product:
             return {"Error": e}
         finally:
             DatabaseConnection.close_connection()
+
+    @classmethod
+    def upd_product(self, product_id = None, product_name = None, brand_id = None, category_id = None, model_year = None, list_price = None):
+        try:
+            update_values = []
+            if product_name:
+                update_values.append(f"product_name = '{product_name}'")
+            if brand_id:
+                update_values.append(f"brand_id = {int(brand_id)}")
+            if category_id:
+                update_values.append(f"category_id = {int(category_id)}")
+            if model_year:
+                update_values.append(f"model_year = {int(model_year)}")
+            if list_price:
+                update_values.append(f"list_price = {float(list_price)}")
+            if len(update_values) == 0:
+                return {"message": "No se proporcionaron datos para actualizar"}, 400
+
+            query = "UPDATE production.products SET " + ", ".join(update_values) + " WHERE product_id = %s"
+
+            params = product_id,
+
+            DatabaseConnection.execute_query(query, params)
+        except Exception as e:
+            return {"Error": e}
+        finally:
+            DatabaseConnection.close_connection()

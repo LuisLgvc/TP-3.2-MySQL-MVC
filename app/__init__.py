@@ -24,5 +24,9 @@ def ejercicios_mysql():
     @app.route('/addproduct', methods=['POST'])
     def add_product():
         return ProductController.add_product()
+    
+    @app.route('/updproduct/<int:product_id>', methods=['PUT'])
+    def upd_product(product_id):
+        return ProductController.upd_product(product_id)
 
     return app

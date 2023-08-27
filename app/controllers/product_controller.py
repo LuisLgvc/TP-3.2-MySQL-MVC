@@ -60,3 +60,18 @@ class ProductController:
             return jsonify({}), 201
         except Exception as e:
             return {"Error": e}
+        
+    @classmethod
+    def upd_product(cls, product_id):
+        try:
+            product_name = request.args.get('product_name', '')
+            brand_id = request.args.get('brand_id', '')
+            category_id = request.args.get('category_id', '')
+            model_year = request.args.get('model_year', '')
+            list_price = request.args.get('list_price', '')
+
+            Product.upd_product(product_id, product_name, brand_id, category_id, model_year, list_price)
+            
+            return jsonify({}), 201
+        except Exception as e:
+            return {"Error": e}
