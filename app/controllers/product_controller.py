@@ -75,3 +75,12 @@ class ProductController:
             return jsonify({}), 201
         except Exception as e:
             return {"Error": e}
+        
+    @classmethod
+    def del_product(cls, product_id):
+        try:
+            Product.del_product(product_id)
+
+            return jsonify({}), 204
+        except Exception as e:
+            return {"Error": e}

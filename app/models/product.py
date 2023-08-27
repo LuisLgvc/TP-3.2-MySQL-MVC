@@ -88,3 +88,16 @@ class Product:
             return {"Error": e}
         finally:
             DatabaseConnection.close_connection()
+
+    @classmethod
+    def del_product(self, product_id):
+        try:
+            query = "DELETE FROM production.products WHERE product_id = %s;"
+
+            params = product_id,
+
+            DatabaseConnection.execute_query(query, params)
+        except Exception as e:
+            return {"Error": e}
+        finally:
+            DatabaseConnection.close_connection()

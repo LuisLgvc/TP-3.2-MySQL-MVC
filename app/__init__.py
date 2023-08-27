@@ -28,5 +28,9 @@ def ejercicios_mysql():
     @app.route('/updproduct/<int:product_id>', methods=['PUT'])
     def upd_product(product_id):
         return ProductController.upd_product(product_id)
+    
+    @app.route('/delproduct/<int:product_id>', methods=['DELETE'])
+    def del_product(product_id):
+        return ProductController.del_product(product_id)
 
     return app
