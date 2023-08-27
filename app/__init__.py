@@ -2,6 +2,7 @@ from flask import request, Flask, jsonify
 from config import Config
 from app.database import DatabaseConnection
 from .models.product import Product
+from .controllers.product_controller import ProductController
 
 
 def ejercicios_mysql():
@@ -12,13 +13,8 @@ def ejercicios_mysql():
 
     app.config.from_object(Config)
 
-    @app.route('/product', methods=['GET'])
-    def obtener_producto():
-        product = Product(
-            product_id= request.args.get('product_id', '')
-        )
-        Product.get_product(product)
-
-        return "Exito"
+    @app.route('/product/<int:product_id>', methods=['GET'])
+    def get_product(product_id):
+        return ProductController.get_product(product_id)
 
     return app
