@@ -2,7 +2,8 @@
 
 Se recomienda el uso de la extension "Thunder Client" de Visual Studio Code o el uso del programa "Postman" para el correcto funcionamiento de los metodos GET, POST, PUT y DELETE ya que cuenta con una pestaña de seleccion para los metodos que sean necesarios usar
 
-![Captura de pantalla 2023-08-25 233625](https://github.com/LuisLgvc/TP-3.2-MySQL-MVC/assets/113144443/823ca3e3-0e31-4c76-b697-7e5fa69f1dbb)
+![ej-Thunder-Client](https://github.com/LuisLgvc/TP-3.2-MySQL-MVC/assets/113144443/c5f826b1-40ad-4b30-b87a-081ef4063506)
+
 
 Ejercicio 2.1
 http://127.0.0.1:5000/product/1
