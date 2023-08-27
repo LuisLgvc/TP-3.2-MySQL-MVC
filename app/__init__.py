@@ -21,4 +21,8 @@ def ejercicios_mysql():
     def get_products(brand_name, category_name):
         return ProductController.get_products(brand_name, category_name)
 
+    @app.route('/addproduct', methods=['POST'])
+    def add_product():
+        return ProductController.add_product()
+
     return app

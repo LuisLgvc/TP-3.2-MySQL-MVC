@@ -49,3 +49,15 @@ class Product:
             return {"Error": e}
         finally:
             DatabaseConnection.close_connection()
+
+    @classmethod
+    def add_product(self, product_name, brand_id, category_id, model_year, list_price):
+        try:
+            query = """INSERT INTO production.products (product_name, brand_id, category_id, model_year, list_price)
+            VALUES (%s, %s, %s, %s, %s);"""
+            params = (product_name, int(brand_id), int(category_id), int(model_year), float(list_price))
+            DatabaseConnection.execute_query(query, params)
+        except Exception as e:
+            return {"Error": e}
+        finally:
+            DatabaseConnection.close_connection()
