@@ -16,5 +16,9 @@ def ejercicios_mysql():
     @app.route('/product/<int:product_id>', methods=['GET'])
     def get_product(product_id):
         return ProductController.get_product(product_id)
+    
+    @app.route('/products/<string:brand_name>/<string:category_name>', methods=['GET'])
+    def get_products(brand_name, category_name):
+        return ProductController.get_products(brand_name, category_name)
 
     return app

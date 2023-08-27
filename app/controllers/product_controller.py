@@ -21,4 +21,27 @@ class ProductController:
             }
             return jsonify(response), 200
         else:
-            return {"msg": "No se encontron el producto"}
+            return {"msg": "No se encontro el producto"}
+        
+    @classmethod
+    def get_products(cls, brand_name, category_name):
+        product_model = Product()
+        results = product_model.get_products(brand_name, category_name)
+        product_list = []
+        if len(results) > 0:
+            for result in results:
+                product_list.append({
+                    "brand": {
+                        "brand_id": result[4],
+                        "brand_name": result[5]},
+                    "category": {
+                        "category_id": result[6],
+                        "category_name": result[7]},
+                    "list_price": result[3],
+                    "model_year": result[2],
+                    "product_id": result[0],
+                    "product_name": result[1]
+                })
+            return jsonify({"products": product_list, "total": len(product_list)}), 200   
+        else:
+            return jsonify({"Mensaje": "No se encontraron coincidencias"}), 404

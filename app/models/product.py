@@ -13,19 +13,39 @@ class Product:
 
     @classmethod
     def get_product(self, product_id):
-        query = """SELECT PRP.product_id, PRP.product_name, PRP.model_year, PRP.list_price, PRP.brand_id, PRD.brand_name, PRP.category_id, PRC.category_name FROM production.products AS PRP INNER JOIN production.brands AS PRD ON PRP.brand_id = PRD.brand_id INNER JOIN production.categories AS PRC ON PRP.category_id = PRC.category_id WHERE PRP.product_id = %s;"""
-        params = (product_id,)
-        result = DatabaseConnection.fetch_one(query, params)
-        if result is not None:
-            return Product(
-                product_id= product_id,
-                product_name= result[1],
-                model_year= result[2],
-                list_price= result[3],
-                brand_id= result[4],
-                brand_name= result[5],
-                category_id= result[6],
-                category_name= result[7]
-            )
-        else:
-            return None
+        try:
+            query = """SELECT PRP.product_id, PRP.product_name, PRP.model_year, PRP.list_price, PRP.brand_id, PRD.brand_name, PRP.category_id, PRC.category_name FROM production.products AS PRP INNER JOIN production.brands AS PRD ON PRP.brand_id = PRD.brand_id INNER JOIN production.categories AS PRC ON PRP.category_id = PRC.category_id WHERE PRP.product_id = %s;"""
+            params = (product_id,)
+            result = DatabaseConnection.fetch_one(query, params)
+            if result is not None:
+                return Product(
+                    product_id= product_id,
+                    product_name= result[1],
+                    model_year= result[2],
+                    list_price= result[3],
+                    brand_id= result[4],
+                    brand_name= result[5],
+                    category_id= result[6],
+                    category_name= result[7]
+                )
+            else:
+                return None
+        except Exception as e:
+            return {"Error": e}
+        finally:
+            DatabaseConnection.close_connection()
+        
+    @classmethod
+    def get_products(self, brand_name, category_name):
+        try:
+            query = """SELECT PRP.product_id, PRP.product_name, PRP.model_year, PRP.list_price, PRP.brand_id, PRD.brand_name, PRP.category_id, PRC.category_name FROM production.products AS PRP 
+            INNER JOIN production.brands AS PRD ON PRP.brand_id = PRD.brand_id 
+            INNER JOIN production.categories AS PRC ON PRP.category_id = PRC.category_id 
+            WHERE PRD.brand_name LIKE %s AND PRC.category_name LIKE %s;"""
+            params = ("%" + brand_name + "%", "%" + category_name + "%")
+            results = DatabaseConnection.fetch_all(query, params)
+            return results
+        except Exception as e:
+            return {"Error": e}
+        finally:
+            DatabaseConnection.close_connection()
