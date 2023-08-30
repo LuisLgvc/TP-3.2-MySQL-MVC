@@ -1,8 +1,9 @@
 # TP-3.2-MySQL-MVC
 
-Se recomienda el uso de la extension "Thunder Client" de Visual Studio Code para el correcto funcionamiento de los metodos GET, POST, PUT y DELETE ya que cuenta con una pestaña de seleccion para los metodos que sean necesarios usar
+Se recomienda el uso de la extension "Thunder Client" de Visual Studio Code o el uso del programa "Postman" para el correcto funcionamiento de los metodos GET, POST, PUT y DELETE ya que cuenta con una pestaña de seleccion para los metodos que sean necesarios usar
 
-![Captura de pantalla 2023-08-25 233625](https://github.com/LuisLgvc/TP-3.2-MySQL-MVC/assets/113144443/823ca3e3-0e31-4c76-b697-7e5fa69f1dbb)
+![ej-Thunder-Client](https://github.com/LuisLgvc/TP-3.2-MySQL-MVC/assets/113144443/c5f826b1-40ad-4b30-b87a-081ef4063506)
+
 
 Ejercicio 2.1
 http://127.0.0.1:5000/product/1
@@ -15,6 +16,3 @@ http://127.0.0.1:5000/addproduct?product_name=Trek Hiperfly XLR8 - 2019&brand_id
 
 Ejercicio 2.4
 http://127.0.0.1:5000/updproduct/1?product_name=Actualizacion&brand_id=5&category_id=6&model_year=2018&list_price=994.59
-
-Ejercicio 2.5
-http://127.0.0.1:5000/delproduct/10
