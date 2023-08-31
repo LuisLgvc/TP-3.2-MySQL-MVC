@@ -5,6 +5,22 @@ Se recomienda el uso de la extension "Thunder Client" de Visual Studio Code o el
 ![ej-Thunder-Client](https://github.com/LuisLgvc/TP-3.2-MySQL-MVC/assets/113144443/c5f826b1-40ad-4b30-b87a-081ef4063506)
 
 
+Ejercicio 1.1
+http://127.0.0.1:5000/customer/1
+
+Ejercicio 1.2
+http://127.0.0.1:5000/customers?state=ca
+
+Ejercicio 1.3
+http://127.0.0.1:5000/customers?first_name=11&last_name=22&email=33&phone=44&street=55&city=66&state=77&zip_code=88
+
+Ejercicio 1.4
+
+
+Ejercicio 1.5
+http://127.0.0.1:5000/customer/1
+
+
 Ejercicio 2.1
 http://127.0.0.1:5000/product/1
 

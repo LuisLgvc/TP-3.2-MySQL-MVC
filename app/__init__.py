@@ -2,7 +2,9 @@ from flask import request, Flask, jsonify
 from config import Config
 from app.database import DatabaseConnection
 from .models.product import Product
+from .models.customer import Customer
 from .controllers.product_controller import ProductController
+from .controllers.customer_controller import CustomerController
 
 
 def ejercicios_mysql():
@@ -13,6 +15,22 @@ def ejercicios_mysql():
 
     app.config.from_object(Config)
 
+    @app.route('/customer/<int:customer_id>', methods=['GET'])
+    def get_customer(customer_id):
+        return CustomerController.get_customer(customer_id)
+    
+    @app.route('/customers', methods=['GET'])
+    def get_customers():
+        return CustomerController.get_customers()
+
+    @app.route('/customers', methods=['POST'])
+    def add_customer():
+        return CustomerController.add_customer()
+    
+    @app.route('/customer/<int:customer_id>', methods=['DELETE'])
+    def del_customer(customer_id):
+        return CustomerController.del_customer(customer_id)
+    
     @app.route('/product/<int:product_id>', methods=['GET'])
     def get_product(product_id):
         return ProductController.get_product(product_id)
