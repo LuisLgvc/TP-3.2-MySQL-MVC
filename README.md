@@ -35,4 +35,4 @@ Ejercicio 2.4
 http://127.0.0.1:5000/products/1?product_name=Actualizacion&brand_id=5&category_id=6&model_year=2018&list_price=994.59
 
 Ejercicio 2.5
-http://127.0.0.1:5000/delproduct/10
+http://127.0.0.1:5000/products/1
