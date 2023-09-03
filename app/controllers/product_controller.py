@@ -2,12 +2,13 @@ from flask import jsonify, request
 from ..models.product import Product
 
 class ProductController:
+    # Ejercicio 2.1
     @classmethod
     def get_product(cls, product_id):
         product_instance = Product.get_product(product_id)
 
         if product_instance:
-            response = {
+            """ response = {
                 "brand": {
                     "brand_id": product_instance.brand_id,
                     "brand_name": product_instance.brand_name},
@@ -18,11 +19,12 @@ class ProductController:
                 "model_year": product_instance.model_year,
                 "product_id": product_instance.product_id,
                 "product_name": product_instance.product_name
-            }
-            return jsonify(response), 200
+            } """
+            return product_instance, 200
         else:
             return {"msg": "No se encontro el producto"}
-        
+    
+    # Ejercicio 2.2
     @classmethod
     def get_products(cls, brand_name, category_name):
         product_model = Product()
@@ -46,6 +48,7 @@ class ProductController:
         else:
             return jsonify({"Mensaje": "No se encontraron coincidencias"}), 404
         
+    # Ejercicio 2.3
     @classmethod
     def add_product(cls):
         try:
@@ -60,7 +63,8 @@ class ProductController:
             return jsonify({}), 201
         except Exception as e:
             return {"Error": e}
-        
+    
+    # Ejercicio 2.4
     @classmethod
     def upd_product(cls, product_id):
         try:
@@ -75,7 +79,8 @@ class ProductController:
             return jsonify({}), 201
         except Exception as e:
             return {"Error": e}
-        
+    
+    # Ejercicio 2.5
     @classmethod
     def del_product(cls, product_id):
         try:

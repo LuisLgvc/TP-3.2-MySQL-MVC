@@ -14,40 +14,54 @@ def ejercicios_mysql():
                 template_folder=Config.TEMPLATE_FOLDER)
 
     app.config.from_object(Config)
-
-    @app.route('/customer/<int:customer_id>', methods=['GET'])
+    
+    # Ejercicio 1.1
+    @app.route('/customers/<int:customer_id>', methods=['GET'])
     def get_customer(customer_id):
         return CustomerController.get_customer(customer_id)
     
+    # Ejercicio 1.2
     @app.route('/customers', methods=['GET'])
     def get_customers():
         return CustomerController.get_customers()
-
+    
+    # Ejercicio 1.3
     @app.route('/customers', methods=['POST'])
     def add_customer():
         return CustomerController.add_customer()
     
-    @app.route('/customer/<int:customer_id>', methods=['DELETE'])
+    # Ejercicio 1.4 
+    @app.route('/customers/<int:customer_id>', methods=['PUT'])
+    def upd_customer(customer_id):
+        return CustomerController.upd_customer(customer_id)
+    
+    # Ejercicio 1.5 
+    @app.route('/customers/<int:customer_id>', methods=['DELETE'])
     def del_customer(customer_id):
         return CustomerController.del_customer(customer_id)
     
-    @app.route('/product/<int:product_id>', methods=['GET'])
+    # Ejercicio 2.1
+    @app.route('/products/<int:product_id>', methods=['GET'])
     def get_product(product_id):
         return ProductController.get_product(product_id)
     
+    # Ejercicio 2.2 
     @app.route('/products/<string:brand_name>/<string:category_name>', methods=['GET'])
     def get_products(brand_name, category_name):
         return ProductController.get_products(brand_name, category_name)
-
-    @app.route('/addproduct', methods=['POST'])
+    
+    # Ejercicio 2.3
+    @app.route('/products', methods=['POST'])
     def add_product():
         return ProductController.add_product()
     
-    @app.route('/updproduct/<int:product_id>', methods=['PUT'])
+    # Ejercicio 2.4 
+    @app.route('/products/<int:product_id>', methods=['PUT'])
     def upd_product(product_id):
         return ProductController.upd_product(product_id)
     
-    @app.route('/delproduct/<int:product_id>', methods=['DELETE'])
+    # Ejercicio 2.5 
+    @app.route('/products/<int:product_id>', methods=['DELETE'])
     def del_product(product_id):
         return ProductController.del_product(product_id)
 

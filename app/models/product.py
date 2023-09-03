@@ -11,6 +11,7 @@ class Product:
         self.brand_name = brand_name
         self.category_name = category_name
 
+    # Ejercicio 2.1
     @classmethod
     def get_product(self, product_id):
         try:
@@ -35,6 +36,7 @@ class Product:
         finally:
             DatabaseConnection.close_connection()
         
+    # Ejercicio 2.2
     @classmethod
     def get_products(self, brand_name, category_name):
         try:
@@ -50,6 +52,7 @@ class Product:
         finally:
             DatabaseConnection.close_connection()
 
+    # Ejercicio 2.3
     @classmethod
     def add_product(self, product_name, brand_id, category_id, model_year, list_price):
         try:
@@ -62,6 +65,7 @@ class Product:
         finally:
             DatabaseConnection.close_connection()
 
+    # Ejercicio 2.4
     @classmethod
     def upd_product(self, product_id = None, product_name = None, brand_id = None, category_id = None, model_year = None, list_price = None):
         try:
@@ -89,6 +93,7 @@ class Product:
         finally:
             DatabaseConnection.close_connection()
 
+    # Ejercicio 2.5
     @classmethod
     def del_product(self, product_id):
         try:
