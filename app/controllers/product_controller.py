@@ -5,10 +5,10 @@ class ProductController:
     # Ejercicio 2.1
     @classmethod
     def get_product(cls, product_id):
-        product_instance = Product.get_product(product_id)
+        product_instance = Product.get_product(int(product_id))
 
         if product_instance:
-            """ response = {
+            response = {
                 "brand": {
                     "brand_id": product_instance.brand_id,
                     "brand_name": product_instance.brand_name},
@@ -19,8 +19,8 @@ class ProductController:
                 "model_year": product_instance.model_year,
                 "product_id": product_instance.product_id,
                 "product_name": product_instance.product_name
-            } """
-            return product_instance, 200
+            }
+            return response, 200
         else:
             return {"msg": "No se encontro el producto"}
     
